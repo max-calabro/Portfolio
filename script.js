@@ -1,3 +1,6 @@
+//
+//  variables
+//
 const siteInfo = {
   //  who me?
   name: 'Max Clark Calabro',
@@ -13,11 +16,68 @@ const siteInfo = {
 
   //  socials / contact info
   linkedIn: 'This will be the LinkedIn link',
-  gitHub: 'This will be the GitHub link'
+  gitHub: 'This will be the GitHub link',
+  email: 'maxccalabro@gmail.com'
 }
 
-const test = () => {
+const project1 = {
+  name: '',
+  description: '',
+  deployment: '',
+  gitHub: '',
+  screenshot: ''
+}
+
+const project2 = {
+  name: '',
+  description: '',
+  deployment: '',
+  gitHub: '',
+  screenshot: ''
+}
+
+const project3 = {
+  name: '',
+  description: '',
+  deployment: '',
+  gitHub: '',
+  screenshot: ''
+}
+
+//
+//  functions
+//
+const enterView = () => {
+  let enterView = document.createElement('div')
+  enterView.className = 'enter-view'
+  enterView.innerHTML = siteInfo.name + ' Portfolio'
+  document.querySelector('body').append(enterView)
+  setTimeout(() => {
+    removeEnterView()
+  }, 3000)
+}
+enterView()
+
+const removeEnterView = () => {
+  document.querySelector('.enter-view').remove()
+}
+
+const addHeader = () => {
+  document.createElement('header')
+  fillHeader()
+}
+setTimeout(() => {
+  addHeader()
+}, 3000)
+
+const fillHeader = () => {
+  let headerInfo = document.createElement('h4')
+  headerInfo.className = 'name'
+  document.querySelector('header').append(headerInfo)
   document.querySelector('.name').innerHTML =
     siteInfo.name + ', ' + siteInfo.title
 }
-test()
+
+//
+//  listeners
+//
