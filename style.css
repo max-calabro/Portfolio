@@ -13,7 +13,7 @@
   justify-content: center;
   align-items: center;
 
-  animation-duration: 1s;
+  animation-duration: 3s;
   animation-name: fadeInThenOut;
   animation-iteration-count: 1;
 
@@ -32,12 +32,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border: 1px solid black;
 }
 
 .main-display {
   display: flex;
-
-  background-color: bisque;
+  border: 1px solid black;
 }
 
 .button-aboutMe, .button-resume, .button-projects, .button-contactInfo {
@@ -45,6 +46,24 @@
   cursor: pointer;
 }
 
+.button-aboutMe {
+  width: 70px;
+}
+
+.button-resume, .button-projects {
+  width: 55px
+}
+
+.button-contactInfo {
+  width: 85px;
+}
+
 .button-aboutMe:hover, .button-resume:hover, .button-projects:hover, .button-contactInfo:hover  {
   color:blueviolet;
+}
+
+.resume-image {
+  background-image: url("images/MaxCalabroPortfolioDisplayResume.jpg");
+  height: 1000px;
+  width: 1000px;
 }

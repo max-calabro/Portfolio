@@ -65,6 +65,9 @@ contactInfo.innerHTML = 'Contact Info'
 //  track which element is a dot
 let trackDot = 0
 
+//  track if the page just loaded or if user has clicked
+let pageJustLoaded = true
+
 //
 //  functions
 //
@@ -107,18 +110,19 @@ const fillHeader = () => {
 }
 
 const mainDisplay = () => {
-  document.querySelector('.main-display').style.height = '200px'
-  document.querySelector('.main-display').style.width = '200px'
+  document.querySelector('.main-display').style.height = '1000px'
+  document.querySelector('.main-display').style.width = '1000px'
   let section = document.createElement('section')
   document.querySelector('.main-display').append(section)
 }
 
 const fillMainDisplay = (show) => {
-  //  remove current text from section
-  //document.querySelector('div').remove()
-  let mainView = document.createElement('div')
-  mainView.className = 'main-view'
-  document.querySelector('section').append(mainView)
+  if (pageJustLoaded === true) {
+    let mainView = document.createElement('div')
+    mainView.className = 'main-view'
+    document.querySelector('section').append(mainView)
+    pageJustLoaded = false
+  }
   switch (show) {
     case 'aboutMe':
       trackDot = 0
@@ -145,7 +149,15 @@ const fillMainDisplay = (show) => {
 
 const fillMainView = (siteInfoKey, changeToDot) => {
   changeToDot.innerHTML = '.'
-  document.querySelector('.main-view').innerHTML = siteInfoKey
+  if (trackDot === 1) {
+    console.log('here')
+    let resumeImage = document.createElement('div')
+    resumeImage.className = 'resume-image'
+    document.querySelector('.main-view').append(resumeImage)
+    document.querySelector('.main-view').innerHTML = ''
+  } else {
+    document.querySelector('.main-view').innerHTML = siteInfoKey
+  }
   undoDot()
 }
 
