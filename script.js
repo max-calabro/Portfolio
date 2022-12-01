@@ -108,7 +108,7 @@ const fillMainDisplay = (show) => {
   switch (show) {
     case 'resume':
       console.log(show)
-      //  probably call a function called showResume
+      //  call a function called showResume
       break
     case 'projects':
       console.log(show)
@@ -116,10 +116,11 @@ const fillMainDisplay = (show) => {
       break
     case 'contactInfo':
       console.log(show)
-      //  all a function called showcontactInfo
+      //  call a function called showcontactInfo
       break
     default:
       console.log('default')
+      //  call a function called showAboutMe
       break
   }
 }
