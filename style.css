@@ -40,6 +40,11 @@
   background-color: bisque;
 }
 
-.button {
-  color: gray;
+.button-aboutMe, .button-resume, .button-projects, .button-contactInfo {
+  color: blue;
+  cursor: pointer;
+}
+
+.button-aboutMe:hover, .button-resume:hover, .button-projects:hover, .button-contactInfo:hover  {
+  color:blueviolet;
 }
