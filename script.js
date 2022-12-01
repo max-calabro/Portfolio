@@ -98,13 +98,30 @@ const fillHeader = () => {
 }
 
 const mainDisplay = () => {
+  document.querySelector('.main-display').style.height = '100px'
+  document.querySelector('.main-display').style.width = '100px'
   let section = document.createElement('section')
   document.querySelector('.main-display').append(section)
 }
 
 const fillMainDisplay = (show) => {
-  console.log(show)
-  //  set up a switch that will fill the main display based on what is clicked
+  switch (show) {
+    case 'resume':
+      console.log(show)
+      //  probably call a function called showResume
+      break
+    case 'projects':
+      console.log(show)
+      //  call a function called showprojects
+      break
+    case 'contactInfo':
+      console.log(show)
+      //  all a function called showcontactInfo
+      break
+    default:
+      console.log('default')
+      break
+  }
 }
 
 //
