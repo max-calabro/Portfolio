@@ -68,6 +68,7 @@ const addHeader = () => {
 }
 setTimeout(() => {
   addHeader()
+  mainDisplay()
 }, 3000)
 
 const fillHeader = () => {
@@ -75,9 +76,31 @@ const fillHeader = () => {
   headerInfo.className = 'name'
   document.querySelector('header').append(headerInfo)
   document.querySelector('.name').innerHTML =
-    siteInfo.name + ', ' + siteInfo.title
+    siteInfo.name +
+    '<br></br>' +
+    siteInfo.title +
+    '<br></br>' +
+    '<br></br>' +
+    'resume link' +
+    '<br></br>' +
+    'project link' +
+    '<br></br>' +
+    'contact info link' +
+    '<br></br>'
+}
+
+const mainDisplay = () => {
+  let section = document.createElement('section')
+  document.querySelector('.main-display').append(section)
+}
+
+const fillMainDisplay = () => {
+  console.log('loaded')
+  //  set up a switch that will fill the main display based on what is clicked
 }
 
 //
 //  listeners
 //
+
+//  event listener that sends info to fillMainDisplay
