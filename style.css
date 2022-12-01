@@ -27,3 +27,22 @@
 
   max-width: 160px;
 }
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-display {
+  display: flex;
+
+  background-color: bisque;
+
+  height: 100px;
+  width: 100px;
+}
+
+.button {
+  color: gray;
+}

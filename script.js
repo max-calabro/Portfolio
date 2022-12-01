@@ -44,6 +44,19 @@ const project3 = {
   screenshot: ''
 }
 
+//  buttons
+let resume = document.createElement('div')
+resume.className = 'button-resume'
+resume.innerHTML = 'Resume'
+
+let projects = document.createElement('div')
+projects.className = 'button-projects'
+projects.innerHTML = 'Projects'
+
+let contactInfo = document.createElement('div')
+contactInfo.className = 'button-contactInfo'
+contactInfo.innerHTML = 'Contact Info'
+
 //
 //  functions
 //
@@ -54,7 +67,7 @@ const enterView = () => {
   document.querySelector('body').append(enterView)
   setTimeout(() => {
     removeEnterView()
-  }, 3000)
+  }, 1000)
 }
 enterView()
 
@@ -67,26 +80,21 @@ const addHeader = () => {
   fillHeader()
 }
 setTimeout(() => {
-  addHeader()
+  addHeader() // also calls fill header
   mainDisplay()
-}, 3000)
+  createListeners()
+  fillMainDisplay('initial load')
+}, 1000)
 
 const fillHeader = () => {
   let headerInfo = document.createElement('h4')
   headerInfo.className = 'name'
   document.querySelector('header').append(headerInfo)
   document.querySelector('.name').innerHTML =
-    siteInfo.name +
-    '<br></br>' +
-    siteInfo.title +
-    '<br></br>' +
-    '<br></br>' +
-    'resume link' +
-    '<br></br>' +
-    'project link' +
-    '<br></br>' +
-    'contact info link' +
-    '<br></br>'
+    siteInfo.name + '<br></br>' + siteInfo.title + '<br></br>'
+  document.querySelector('header').append(resume)
+  document.querySelector('header').append(projects)
+  document.querySelector('header').append(contactInfo)
 }
 
 const mainDisplay = () => {
@@ -94,8 +102,8 @@ const mainDisplay = () => {
   document.querySelector('.main-display').append(section)
 }
 
-const fillMainDisplay = () => {
-  console.log('loaded')
+const fillMainDisplay = (show) => {
+  console.log(show)
   //  set up a switch that will fill the main display based on what is clicked
 }
 
@@ -104,3 +112,18 @@ const fillMainDisplay = () => {
 //
 
 //  event listener that sends info to fillMainDisplay
+const createListeners = () => {
+  document.querySelector('.button-resume').addEventListener('click', () => {
+    fillMainDisplay('resume')
+  })
+
+  document.querySelector('.button-projects').addEventListener('click', () => {
+    fillMainDisplay('projects')
+  })
+
+  document
+    .querySelector('.button-contactInfo')
+    .addEventListener('click', () => {
+      fillMainDisplay('contactInfo')
+    })
+}
