@@ -68,6 +68,9 @@ let trackDot = 0
 //  track if the page just loaded or if user has clicked
 let pageJustLoaded = true
 
+//  track if resume is showing
+let resumeShowing = false
+
 //
 //  functions
 //
@@ -150,14 +153,25 @@ const fillMainDisplay = (show) => {
 const fillMainView = (siteInfoKey, changeToDot) => {
   changeToDot.innerHTML = '.'
   if (trackDot === 1) {
-    console.log('here')
-    let resumeImage = document.createElement('div')
-    resumeImage.className = 'resume-image'
-    document.querySelector('.main-view').append(resumeImage)
-    document.querySelector('.main-view').innerHTML = ''
+    showResume()
   } else {
+    if (resumeShowing === true) {
+      let beGone = document.querySelector('.resume-image')
+      beGone.remove()
+      resumeShowing = false
+    }
     document.querySelector('.main-view').innerHTML = siteInfoKey
   }
+  undoDot()
+}
+
+const showResume = () => {
+  let resumeImage = document.createElement('img')
+  resumeImage.className = 'resume-image'
+  resumeImage.src = 'images/MaxCalabroPortfolioDisplayResume.jpg'
+  document.querySelector('.image-container').append(resumeImage)
+  document.querySelector('.main-view').innerHTML = ''
+  resumeShowing = true
   undoDot()
 }
 
