@@ -9,7 +9,9 @@ const siteInfo = {
     'I am a full stack engineer with a background in physics. Some other stuff blah blah.',
 
   //  about me
-  aboutMe: 'This will be a big paragraph about me',
+  //  fade onto the page a second after? Top left to bottom right? What do you mean too much fading?
+  aboutMe:
+    'I am a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.',
 
   //  resume / projects
   resume: 'This will be the resume link',
@@ -89,27 +91,27 @@ const removeEnterView = () => {
   document.querySelector('.enter-view').remove()
 }
 
-const addHeader = () => {
-  document.createElement('header')
-  fillHeader()
+const addSidebar = () => {
+  document.createElement('div')
+  fillSidebar()
 }
 setTimeout(() => {
-  addHeader() // also calls fill header
+  addSidebar() // also calls fill header
   mainDisplay()
   createListeners()
   fillMainDisplay('initial load')
 }, 1000)
 
-const fillHeader = () => {
-  let headerInfo = document.createElement('h4')
-  headerInfo.className = 'name'
-  document.querySelector('header').append(headerInfo)
+const fillSidebar = () => {
+  document.querySelector('.sidebar').prepend(contactInfo)
+  document.querySelector('.sidebar').prepend(projects)
+  document.querySelector('.sidebar').prepend(resume)
+  document.querySelector('.sidebar').prepend(aboutMe)
+  let sidebarInfo = document.createElement('h4')
+  sidebarInfo.className = 'name'
+  document.querySelector('.sidebar').prepend(sidebarInfo)
   document.querySelector('.name').innerHTML =
     siteInfo.name + '<br></br>' + siteInfo.title + '<br></br>'
-  document.querySelector('header').append(aboutMe)
-  document.querySelector('header').append(resume)
-  document.querySelector('header').append(projects)
-  document.querySelector('header').append(contactInfo)
 }
 
 const mainDisplay = () => {
@@ -205,7 +207,7 @@ const ChangeAllButOne = (dotValue) => {
     projects.innerHTML = 'Projects'
   }
   if (dotValue != 3) {
-    contactInfo.innerHTML = 'Contact Info'
+    contactInfo.innerHTML = 'Contact Me'
   }
 }
 //

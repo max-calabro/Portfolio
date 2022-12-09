@@ -8,6 +8,13 @@
   100% { opacity: 1 }
 }
 
+  /* These are css glabal variables! */
+:root {
+  --white: #fafaff;
+  --black: #333533;
+}
+
+/*  Loading Fade  */
 .enter-view {
   display: flex;
   justify-content: center;
@@ -21,26 +28,42 @@
   min-height: 100vh;
 }
 
+body {
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  height: 50px;
+  flex: 0 0 10vh;
+}
+
+/*  Main Container  */
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+
+.sidebar {
+  margin-left: 10vh;
+  width: 25vh;
+}
+
 .name {
   display: flex;
   flex-direction: column;
 
   max-width: 160px;
+  margin-block-end: 0;
+  margin-block-start: 0;
 }
 
-.main-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid black;
-}
-
-.main-display {
-  display: flex;
-  border: 1px solid black;
-}
-
+/*  Sidebar Buttons  */
 .button-aboutMe, .button-resume, .button-projects, .button-contactInfo {
   color: blue;
   cursor: pointer;
@@ -62,13 +85,26 @@
   color:blueviolet;
 }
 
+/*  Main Display  */
+.main-display {
+  display: flex;
+  justify-content: center;
+  width: 75vh;
+}
+
+section {
+  margin-left: 25vh;
+  margin-right: 25vh;
+}
+
 .image-container {
-  height: 100px;
-  width: 100px;
+  margin-left: 25vh;
+  margin-right: 25vh;
 }
 
 .resume-image {
   /* background-image: url("images/MaxCalabroPortfolioDisplayResume.jpg"); */
   max-height: 600px;
   max-width: 600px;
+  border: 1px solid black;
 }
