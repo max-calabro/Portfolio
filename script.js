@@ -11,39 +11,49 @@ const siteInfo = {
   //  about me
   //  fade onto the page a second after? Top left to bottom right? What do you mean too much fading?
   aboutMe:
-    'I am a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.',
+    "Hi, I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
 
   //  resume / projects
   resume: 'This will be the resume link',
   projects: 'This will be the projects link',
 
   //  socials / contact info
-  linkedIn: 'This will be the LinkedIn link',
-  gitHub: 'This will be the GitHub link',
-  email: 'maxccalabro@gmail.com'
+  email: 'maxccalabro@gmail.com',
+  phone: '(845) 608-1842',
+  linkedIn: 'https://www.linkedin.com/in/max-calabro/',
+  gitHub: 'https://github.com/max-calabro'
 }
 
 const project1 = {
-  name: '',
-  description: '',
-  deployment: '',
-  gitHub: '',
+  name: 'Pac-Mini',
+  description: "A rendition of Pac-man's first level",
+  deployment: 'https://max-pac-mini.surge.sh/index.html',
+  gitHub: 'https://github.com/max-calabro/Pac-Mini',
   screenshot: ''
 }
 
 const project2 = {
-  name: '',
-  description: '',
+  name: 'BeerBook',
+  description: 'An application for creating curated lists of beers',
   deployment: '',
-  gitHub: '',
+  gitHub: 'https://github.com/Aaron-G-Sanchez/BeerBook-Frontend',
   screenshot: ''
 }
 
 const project3 = {
-  name: '',
-  description: '',
+  name: 'Recipe Crafter',
+  description: 'An application for recording recipes',
   deployment: '',
-  gitHub: '',
+  gitHub: 'https://github.com/max-calabro/Recipe-Crafter',
+  screenshot: ''
+}
+
+const project4 = {
+  name: 'Behavior Tracker',
+  description:
+    'An application for student counselors to help track their students progress',
+  deployment: '',
+  gitHub: 'https://github.com/max-calabro/Behavior-Tracker',
   screenshot: ''
 }
 
@@ -63,6 +73,14 @@ projects.innerHTML = 'Projects'
 let contactInfo = document.createElement('div')
 contactInfo.className = 'button-contactInfo'
 contactInfo.innerHTML = 'Contact Info'
+
+let linkedIn = document.createElement('div')
+linkedIn.className = 'button-linkedIn'
+linkedIn.innerHTML = 'LinkedIn'
+
+let gitHub = document.createElement('div')
+gitHub.className = 'button-gitHub'
+gitHub.innerHTML = 'GitHub'
 
 //  track which element is a dot
 let trackDot = 0
@@ -95,9 +113,23 @@ const addSidebar = () => {
   document.createElement('div')
   fillSidebar()
 }
+
+const fillContactMe = () => {
+  //document.querySelector('.contact-me').append('Contact Me\n')
+  let siteInfoValues = Object.values(siteInfo)
+  // for (let i = 0; i < 4; i++) {
+  //   document.querySelector('.contact-me').append(`${siteInfoValues[i + 6]}\n`)
+  // }
+  document.querySelector('.contact-me').append(`${siteInfoValues[6]}\n`)
+  document.querySelector('.contact-me').append(`${siteInfoValues[7]}\n`)
+  document.querySelector('.contact-me').append(linkedIn)
+  document.querySelector('.contact-me').append(gitHub)
+}
+
 setTimeout(() => {
   addSidebar() // also calls fill header
   mainDisplay()
+  fillContactMe()
   createListeners()
   fillMainDisplay('initial load')
 }, 1000)
@@ -115,10 +147,19 @@ const fillSidebar = () => {
 }
 
 const mainDisplay = () => {
-  document.querySelector('.main-display').style.height = '1000px'
-  document.querySelector('.main-display').style.width = '1000px'
+  document.querySelector('.main-display').style.height = '90vh'
+  //document.querySelector('.main-display').style.width = '1000px'
   let section = document.createElement('section')
   document.querySelector('.main-display').append(section)
+}
+
+const mainViewWidth = (bool) => {
+  let mainView = document.querySelector('.main-view')
+  if (bool) {
+    mainView.style.width = '50vh'
+  } else {
+    mainView.style.width = '0vh'
+  }
 }
 
 const fillMainDisplay = (show) => {
@@ -126,6 +167,7 @@ const fillMainDisplay = (show) => {
     let mainView = document.createElement('div')
     mainView.className = 'main-view'
     document.querySelector('section').append(mainView)
+    mainViewWidth(true)
     pageJustLoaded = false
   }
   switch (show) {
@@ -152,14 +194,68 @@ const fillMainDisplay = (show) => {
   }
 }
 
+const whichProject = (projectNumber) => {
+  switch (projectNumber) {
+    case 0:
+      return project1
+    case 1:
+      return project2
+    case 2:
+      return project3
+    case 3:
+      return project4
+    default:
+      break
+  }
+}
+
+const displayProjects = () => {
+  document.querySelector('.main-view').innerHTML = ''
+
+  let projectGrid = document.createElement('div')
+  projectGrid.className = 'project-grid'
+  document.querySelector('.main-view').append(projectGrid)
+
+  for (let i = 0; i < 4; i++) {
+    //  Project Div
+    let div = document.createElement('div')
+    div.className = `project-${i + 1}`
+    let project = whichProject(i)
+    //project.description
+
+    //  Project Title
+    let projectName = document.createElement('h4')
+    projectName.className = 'project-title'
+    projectName.innerHTML = project.name
+    div.append(projectName)
+
+    //  Project Description
+    let projectDescription = document.createElement('p')
+    projectDescription.className = 'project-description'
+    projectDescription.innerHTML = project.description
+    div.append(projectDescription)
+
+    document.querySelector('.project-grid').append(div)
+  }
+  //  Turn on Listeners
+  projectListeners()
+}
+
 const fillMainView = (siteInfoKey, changeToDot) => {
   changeToDot.innerHTML = '.'
   if (trackDot === 1) {
+    //changeToDot.innerHTML = 'Resume download button!'
+    mainViewWidth(false)
     showResume()
+  } else if (trackDot === 2) {
+    displayProjects()
   } else {
+    mainViewWidth(true)
     if (resumeShowing === true) {
       let beGone = document.querySelector('.resume-image')
       beGone.remove()
+      let youToo = document.querySelector('.image-container')
+      youToo.remove()
       resumeShowing = false
     }
     document.querySelector('.main-view').innerHTML = siteInfoKey
@@ -168,10 +264,15 @@ const fillMainView = (siteInfoKey, changeToDot) => {
 }
 
 const showResume = () => {
+  let imageContainer = document.createElement('div')
+  imageContainer.className = 'image-container'
+  document.querySelector('section').append(imageContainer)
+
   let resumeImage = document.createElement('img')
   resumeImage.className = 'resume-image'
   resumeImage.src = 'images/MaxCalabroPortfolioDisplayResume.jpg'
   document.querySelector('.image-container').append(resumeImage)
+
   document.querySelector('.main-view').innerHTML = ''
   resumeShowing = true
   undoDot()
@@ -210,6 +311,10 @@ const ChangeAllButOne = (dotValue) => {
     contactInfo.innerHTML = 'Contact Me'
   }
 }
+
+const followLink = (link) => {
+  window.open(link, '_blank')
+}
 //
 //  listeners
 //
@@ -221,7 +326,9 @@ const createListeners = () => {
   })
 
   document.querySelector('.button-resume').addEventListener('click', () => {
-    fillMainDisplay('resume')
+    if (resume.innerHTML !== '.') {
+      fillMainDisplay('resume')
+    }
   })
 
   document.querySelector('.button-projects').addEventListener('click', () => {
@@ -233,4 +340,30 @@ const createListeners = () => {
     .addEventListener('click', () => {
       fillMainDisplay('contactInfo')
     })
+
+  document.querySelector('.button-linkedIn').addEventListener('click', () => {
+    followLink(siteInfo.linkedIn)
+  })
+
+  document.querySelector('.button-gitHub').addEventListener('click', () => {
+    followLink(siteInfo.gitHub)
+  })
+}
+
+const projectListeners = () => {
+  document.querySelector('.project-1').addEventListener('click', () => {
+    followLink(project1.gitHub)
+  })
+
+  document.querySelector('.project-1').addEventListener('click', () => {
+    followLink(project2.gitHub)
+  })
+
+  document.querySelector('.project-1').addEventListener('click', () => {
+    followLink(project3.gitHub)
+  })
+
+  document.querySelector('.project-1').addEventListener('click', () => {
+    followLink(project4.gitHub)
+  })
 }

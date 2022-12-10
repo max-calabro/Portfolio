@@ -25,7 +25,7 @@
   animation-iteration-count: 1;
 
   opacity: 0;
-  min-height: 100vh;
+  min-height: 75vh;
 }
 
 body {
@@ -39,14 +39,12 @@ body {
 header {
   display: flex;
   justify-content: center;
-  height: 50px;
   flex: 0 0 10vh;
 }
 
 /*  Main Container  */
 .main-container {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
+  display: flex;
 }
 
 .sidebar {
@@ -64,7 +62,7 @@ header {
 }
 
 /*  Sidebar Buttons  */
-.button-aboutMe, .button-resume, .button-projects, .button-contactInfo {
+.button-aboutMe, .button-resume, .button-projects, .button-contactInfo, .button-linkedIn, .button-gitHub{
   color: blue;
   cursor: pointer;
 }
@@ -81,7 +79,7 @@ header {
   width: 85px;
 }
 
-.button-aboutMe:hover, .button-resume:hover, .button-projects:hover, .button-contactInfo:hover  {
+.button-aboutMe:hover, .button-resume:hover, .button-projects:hover, .button-contactInfo:hover, .button-linkedIn:hover, .button-gitHub:hover  {
   color:blueviolet;
 }
 
@@ -89,22 +87,62 @@ header {
 .main-display {
   display: flex;
   justify-content: center;
-  width: 75vh;
+  align-items: center;
+
+  width: 70%;
 }
 
 section {
-  margin-left: 25vh;
-  margin-right: 25vh;
+  display: flex;
+  justify-content: center;
+  max-width: 100vh;
+}
+
+.main-view {
 }
 
 .image-container {
-  margin-left: 25vh;
-  margin-right: 25vh;
 }
 
 .resume-image {
   /* background-image: url("images/MaxCalabroPortfolioDisplayResume.jpg"); */
-  max-height: 600px;
-  max-width: 600px;
+  max-height: 90vh;
+  max-width: 800px;
   border: 1px solid black;
+}
+
+/*  Projects  */
+.project-grid {
+  display: grid;
+  grid-gap: 1vh;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.project-1, .project-2, .project-3, .project-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid black;
+  padding: 1vh;
+
+  height: 25vh;
+  width: 25vh;
+}
+
+.project-1:hover, .project-2:hover, .project-3:hover, .project-4:hover {
+  box-shadow: 0 0 3px grey;
+}
+
+/*  Contact Me  */
+.contact-me {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+
+  margin-right: 10vh;
+  margin-bottom: 10vh;
+  width: 25vh;
 }
