@@ -138,7 +138,7 @@ setTimeout(() => {
 
 const fillSidebar = () => {
   //  Buttons
-  document.querySelector('.sidebar').prepend(contactInfo)
+  //document.querySelector('.sidebar').prepend(contactInfo)
   document.querySelector('.sidebar').prepend(projects)
   document.querySelector('.sidebar').prepend(resume)
   document.querySelector('.sidebar').prepend(aboutMe)
@@ -153,7 +153,7 @@ const fillSidebar = () => {
   let sidebarName = document.createElement('h1')
   sidebarName.className = 'name'
   document.querySelector('.sidebar').prepend(sidebarName)
-  document.querySelector('.name').innerHTML = siteInfo.name + ',<br></br>'
+  document.querySelector('.name').innerHTML = siteInfo.name + '<br></br>'
 }
 
 const mainDisplay = () => {
@@ -193,10 +193,10 @@ const fillMainDisplay = (show) => {
       trackDot = 2
       fillMainView(siteInfo.projects, projects)
       break
-    case 'contactInfo':
-      trackDot = 3
-      fillMainView(siteInfo.email, contactInfo)
-      break
+    // case 'contactInfo':
+    //   trackDot = 3
+    //   fillMainView(siteInfo.email, contactInfo)
+    //   break
     default:
       trackDot = 0
       fillMainView(siteInfo.aboutMe, aboutMe)
@@ -252,6 +252,9 @@ const displayProjects = () => {
 }
 
 const displayAboutMe = (siteInfoKey) => {
+  //  Remove Previous Text
+  document.querySelector('.main-view').innerHTML = ''
+
   //  Create About Me Container
   let aboutMeContainer = document.createElement('div')
   aboutMeContainer.className = 'about-me-container'
@@ -374,11 +377,11 @@ const createListeners = () => {
     fillMainDisplay('projects')
   })
 
-  document
-    .querySelector('.button-contactInfo')
-    .addEventListener('click', () => {
-      fillMainDisplay('contactInfo')
-    })
+  // document
+  //   .querySelector('.button-contactInfo')
+  //   .addEventListener('click', () => {
+  //     fillMainDisplay('contactInfo')
+  //   })
 
   document.querySelector('.button-linkedIn').addEventListener('click', () => {
     followLink(siteInfo.linkedIn)
