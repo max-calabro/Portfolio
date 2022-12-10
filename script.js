@@ -11,7 +11,7 @@ const siteInfo = {
   //  about me
   //  fade onto the page a second after? Top left to bottom right? What do you mean too much fading?
   aboutMe:
-    "Hi, I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
+    "I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
 
   //  resume / projects
   resume: 'This will be the resume link',
@@ -137,15 +137,23 @@ setTimeout(() => {
 }, 1000)
 
 const fillSidebar = () => {
+  //  Buttons
   document.querySelector('.sidebar').prepend(contactInfo)
   document.querySelector('.sidebar').prepend(projects)
   document.querySelector('.sidebar').prepend(resume)
   document.querySelector('.sidebar').prepend(aboutMe)
-  let sidebarInfo = document.createElement('h4')
-  sidebarInfo.className = 'name'
-  document.querySelector('.sidebar').prepend(sidebarInfo)
-  document.querySelector('.name').innerHTML =
-    siteInfo.name + '<br></br>' + siteInfo.title + '<br></br>'
+
+  //  Title
+  let sidebarTitle = document.createElement('h3')
+  sidebarTitle.className = 'title'
+  document.querySelector('.sidebar').prepend(sidebarTitle)
+  document.querySelector('.title').innerHTML = siteInfo.title + '<br></br>'
+
+  //  Name
+  let sidebarName = document.createElement('h1')
+  sidebarName.className = 'name'
+  document.querySelector('.sidebar').prepend(sidebarName)
+  document.querySelector('.name').innerHTML = siteInfo.name + ',<br></br>'
 }
 
 const mainDisplay = () => {
@@ -243,6 +251,27 @@ const displayProjects = () => {
   projectListeners()
 }
 
+const displayAboutMe = (siteInfoKey) => {
+  //  Create About Me Container
+  let aboutMeContainer = document.createElement('div')
+  aboutMeContainer.className = 'about-me-container'
+  document.querySelector('.main-view').append(aboutMeContainer)
+
+  //  Create Hi Div
+  let hiDiv = document.createElement('div')
+  hiDiv.className = 'hi'
+  hiDiv.innerHTML = 'Hi,'
+
+  //  Create About Me Div
+  let aboutMeDiv = document.createElement('p')
+  aboutMeDiv.className = 'about-me'
+  aboutMeDiv.innerHTML = siteInfoKey
+
+  //  Fill About Me Div
+  aboutMeContainer.append(hiDiv)
+  aboutMeContainer.append(aboutMeDiv)
+}
+
 const resetMainView = () => {
   mainViewWidth(true)
   if (resumeShowing === true) {
@@ -264,7 +293,11 @@ const fillMainView = (siteInfoKey, changeToDot) => {
     displayProjects()
   } else {
     resetMainView()
-    document.querySelector('.main-view').innerHTML = siteInfoKey
+    if (changeToDot === aboutMe) {
+      displayAboutMe(siteInfoKey)
+    } else {
+      document.querySelector('.main-view').innerHTML = siteInfoKey
+    }
   }
   undoDot()
 }
