@@ -114,22 +114,24 @@ const addSidebar = () => {
   fillSidebar()
 }
 
-const fillContactMe = () => {
-  //document.querySelector('.contact-me').append('Contact Me\n')
+const CreateAndFillNavbar = () => {
+  //  Build Navbar
+  let navbar = document.createElement('div')
+  navbar.className = 'navbar'
+  document.querySelector('header').append(navbar)
+
+  //  Fill Navbar
   let siteInfoValues = Object.values(siteInfo)
-  // for (let i = 0; i < 4; i++) {
-  //   document.querySelector('.contact-me').append(`${siteInfoValues[i + 6]}\n`)
-  // }
-  document.querySelector('.contact-me').append(`${siteInfoValues[6]}\n`)
-  document.querySelector('.contact-me').append(`${siteInfoValues[7]}\n`)
-  document.querySelector('.contact-me').append(linkedIn)
-  document.querySelector('.contact-me').append(gitHub)
+  document.querySelector('.navbar').append(`${siteInfoValues[6]}\n`)
+  document.querySelector('.navbar').append(`${siteInfoValues[7]}\n`)
+  document.querySelector('.navbar').append(linkedIn)
+  document.querySelector('.navbar').append(gitHub)
 }
 
 setTimeout(() => {
   addSidebar() // also calls fill header
   mainDisplay()
-  fillContactMe()
+  CreateAndFillNavbar()
   createListeners()
   fillMainDisplay('initial load')
 }, 1000)
@@ -241,6 +243,16 @@ const displayProjects = () => {
   projectListeners()
 }
 
+const resetMainView = () => {
+  mainViewWidth(true)
+  if (resumeShowing === true) {
+    let beGone = document.querySelector('.resume-image')
+    beGone.remove()
+    let youToo = document.querySelector('.image-container')
+    youToo.remove()
+    resumeShowing = false
+  }
+}
 const fillMainView = (siteInfoKey, changeToDot) => {
   changeToDot.innerHTML = '.'
   if (trackDot === 1) {
@@ -248,16 +260,10 @@ const fillMainView = (siteInfoKey, changeToDot) => {
     mainViewWidth(false)
     showResume()
   } else if (trackDot === 2) {
+    resetMainView()
     displayProjects()
   } else {
-    mainViewWidth(true)
-    if (resumeShowing === true) {
-      let beGone = document.querySelector('.resume-image')
-      beGone.remove()
-      let youToo = document.querySelector('.image-container')
-      youToo.remove()
-      resumeShowing = false
-    }
+    resetMainView()
     document.querySelector('.main-view').innerHTML = siteInfoKey
   }
   undoDot()

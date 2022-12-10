@@ -38,8 +38,17 @@ body {
 
 header {
   display: flex;
-  justify-content: center;
+  justify-content: end;
+  align-items: center;
   flex: 0 0 10vh;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  gap: 5vh;
+
+  margin-right: 10vh;
 }
 
 /*  Main Container  */
