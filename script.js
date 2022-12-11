@@ -11,7 +11,7 @@ const siteInfo = {
   //  about me
   //  fade onto the page a second after? Top left to bottom right? What do you mean too much fading?
   aboutMe:
-    "I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences include an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
+    "I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences includes an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
 
   //  resume / projects
   resume: 'This will be the resume link',
@@ -141,7 +141,7 @@ let resumeShowing = false
 const enterView = () => {
   let enterView = document.createElement('div')
   enterView.className = 'enter-view'
-  enterView.innerHTML = siteInfo.name + ' Portfolio'
+  enterView.innerHTML = siteInfo.name + ' | Portfolio'
   document.querySelector('body').append(enterView)
   setTimeout(() => {
     removeEnterView()
@@ -191,6 +191,8 @@ setTimeout(() => {
   fillMainDisplay('initial load')
 }, 3100)
 
+const addGreyBar = () => {}
+
 const fillSidebar = () => {
   //  Buttons
   //document.querySelector('.sidebar').prepend(contactInfo)
@@ -216,6 +218,9 @@ const mainDisplay = () => {
   //document.querySelector('.main-display').style.width = '1000px'
   let section = document.createElement('section')
   document.querySelector('.main-display').append(section)
+
+  //  Add Grey Bar To Name
+  addGreyBar()
 }
 
 const mainViewWidth = (bool) => {
