@@ -57,6 +57,14 @@ const project4 = {
   screenshot: ''
 }
 
+//  Icons
+const icons = {
+  email: 'images/icon-email.png',
+  phone: 'images/icon-phone.png',
+  linkedIn: 'images/icon-linkedin-black.png',
+  gitHub: 'images/icon-github.png'
+}
+
 //  buttons
 let aboutMe = document.createElement('div')
 aboutMe.className = 'button-aboutMe'
@@ -82,6 +90,42 @@ let gitHub = document.createElement('div')
 gitHub.className = 'button-gitHub'
 gitHub.innerHTML = 'GitHub'
 
+//  Icon buttons and containers
+//  Email
+let emailIconContainer = document.createElement('div')
+emailIconContainer.className = 'icon-email-container'
+
+let emailIcon = new Image()
+emailIcon.className = 'icon-email'
+emailIcon.src = 'images/icon-email.png'
+
+//  Phone
+let phoneIconContainer = document.createElement('div')
+phoneIconContainer.className = 'icon-phone-container'
+
+let phoneIcon = new Image()
+phoneIcon.className = 'icon-phone'
+phoneIcon.src = 'images/icon-phone.png'
+
+//  LinkedIn
+let linkedInIconContainer = document.createElement('div')
+linkedInIconContainer.className = 'icon-linkedIn-container'
+
+let linkedInIcon = new Image()
+linkedInIcon.className = 'icon-linkedIn'
+linkedInIcon.src = 'images/icon-linkedin-black.png'
+
+//  GitHub
+let gitHubIconContainer = document.createElement('div')
+gitHubIconContainer.className = 'icon-gitHub-container'
+
+let gitHubIcon = new Image()
+gitHubIcon.className = 'icon-gitHub'
+gitHubIcon.src = 'images/icon-github.png'
+
+//  Contact Info Div
+let contactInfoDiv = document.createElement('div')
+
 //  track which element is a dot
 let trackDot = 0
 
@@ -101,7 +145,7 @@ const enterView = () => {
   document.querySelector('body').append(enterView)
   setTimeout(() => {
     removeEnterView()
-  }, 1000)
+  }, 3000)
 }
 enterView()
 
@@ -122,10 +166,21 @@ const CreateAndFillNavbar = () => {
 
   //  Fill Navbar
   let siteInfoValues = Object.values(siteInfo)
-  document.querySelector('.navbar').append(`${siteInfoValues[6]}\n`)
-  document.querySelector('.navbar').append(`${siteInfoValues[7]}\n`)
-  document.querySelector('.navbar').append(linkedIn)
-  document.querySelector('.navbar').append(gitHub)
+  //  Icons
+  document.querySelector('.navbar').append(emailIconContainer)
+  emailIconContainer.append(emailIcon)
+  document.querySelector('.navbar').append(phoneIconContainer)
+  phoneIconContainer.append(phoneIcon)
+  document.querySelector('.navbar').append(linkedInIconContainer)
+  linkedInIconContainer.append(linkedInIcon)
+  document.querySelector('.navbar').append(gitHubIconContainer)
+  gitHubIconContainer.append(gitHubIcon)
+
+  //  Real Info
+  // document.querySelector('.navbar').append(`${siteInfoValues[6]}\n`)
+  // document.querySelector('.navbar').append(`${siteInfoValues[7]}\n`)
+  // document.querySelector('.navbar').append(linkedIn)
+  // document.querySelector('.navbar').append(gitHub)
 }
 
 setTimeout(() => {
@@ -134,7 +189,7 @@ setTimeout(() => {
   CreateAndFillNavbar()
   createListeners()
   fillMainDisplay('initial load')
-}, 1000)
+}, 3100)
 
 const fillSidebar = () => {
   //  Buttons
@@ -354,6 +409,16 @@ const ChangeAllButOne = (dotValue) => {
   }
 }
 
+const displayIconInfo = (whichIcon) => {
+  contactInfoDiv.innerHTML = ''
+  if (whichIcon === 'email') {
+    contactInfoDiv.innerHTML = siteInfo.email
+  } else if (whichIcon === 'phone') {
+    contactInfoDiv.innerHTML = siteInfo.phone
+  }
+  document.querySelector('.contact-me').append(contactInfoDiv)
+}
+
 const followLink = (link) => {
   window.open(link, '_blank')
 }
@@ -383,12 +448,20 @@ const createListeners = () => {
   //     fillMainDisplay('contactInfo')
   //   })
 
-  document.querySelector('.button-linkedIn').addEventListener('click', () => {
+  document.querySelector('.icon-linkedIn').addEventListener('click', () => {
     followLink(siteInfo.linkedIn)
   })
 
-  document.querySelector('.button-gitHub').addEventListener('click', () => {
+  document.querySelector('.icon-gitHub').addEventListener('click', () => {
     followLink(siteInfo.gitHub)
+  })
+
+  document.querySelector('.icon-email').addEventListener('click', () => {
+    displayIconInfo('email')
+  })
+
+  document.querySelector('.icon-phone').addEventListener('click', () => {
+    displayIconInfo('phone')
   })
 }
 

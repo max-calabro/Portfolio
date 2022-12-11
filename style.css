@@ -55,7 +55,32 @@ header {
   flex-direction: row;
   gap: 5vh;
 
-  margin-right: 10vh;
+  margin-right: 5vh;
+}
+
+/*  Icons */
+.icon-email-container, .icon-phone-container, .icon-linkedIn-container, .icon-gitHub-container {
+  height: 4vh;
+  width: 4vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-email, .icon-phone, .icon-linkedIn {
+  max-height: 90%;
+  max-width: 90%;
+  cursor: pointer;
+}
+.icon-gitHub {
+  max-height: 100%;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+.icon-email-container:hover, .icon-phone-container:hover, .icon-linkedIn-container:hover, .icon-gitHub-container:hover {
+  transform: scale(1.1);
 }
 
 /*  Main Container  */
@@ -104,7 +129,7 @@ header {
 
 /*  Sidebar Buttons  */
 .button-aboutMe, .button-resume, .button-projects, .button-contactInfo, .button-linkedIn, .button-gitHub{
-  color: blue;
+  font-weight: bold;
   cursor: pointer;
   margin-left: 4vh;
 }
@@ -122,7 +147,7 @@ header {
 }
 
 .button-aboutMe:hover, .button-resume:hover, .button-projects:hover, .button-contactInfo:hover, .button-linkedIn:hover, .button-gitHub:hover  {
-  color:blueviolet;
+  transform: scale(1.1);
 }
 
 /*  Main Display  */
@@ -189,16 +214,12 @@ section {
   width: 30vh;
 }
 .project-1 {
-  background-image: ;
 }
 .project-2 {
-  background-image: ;
 }
 .project-3 {
-  background-image: ;
 }
 .project-4 {
-  background-image: ;
 }
 
 .project-1:hover, .project-2:hover, .project-3:hover, .project-4:hover {
@@ -207,6 +228,7 @@ section {
 
 .project-title {
   align-self: flex-start;
+  text-decoration: underline 2px;
   margin-block-start: 0em;
   margin-block-end: 0em;
 }
@@ -220,7 +242,7 @@ section {
 .contact-me {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  /* justify-content: end; */
 
   margin-right: 5vh;
   margin-bottom: 10vh;
