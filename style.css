@@ -250,6 +250,7 @@ section {
 
 .project-1:hover, .project-2:hover, .project-3:hover, .project-4:hover {
   box-shadow: 0 0 3px grey;
+  cursor: pointer;
 }
 
 .project-title {
