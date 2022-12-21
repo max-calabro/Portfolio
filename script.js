@@ -1,4 +1,13 @@
 //
+//  Notes
+/* 
+##projects: links to deploy and github, and make it obvious it can be clicked
+##'frame the project' better in the description, not everyone is going to follo the links but I still want them to know why this matters
+##if they click away they might not come back
+to simple on color, add some accent
+ */
+
+//
 //  variables
 //
 const siteInfo = {
@@ -10,8 +19,14 @@ const siteInfo = {
 
   //  about me
   //  fade onto the page a second after? Top left to bottom right? What do you mean too much fading?
-  aboutMe:
-    "I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences includes an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
+  // aboutMe:
+  //   "I'm a Software Engineer who loves to take on and solve complex problems. My previous experiences includes an undergraduate degree in physics, two years in quality control in pharmaceuticals, and a year as an environmental educator. I am great with people and I can think on my feet to solve complex problems alone or on a team. I am excited to work with other driven people.",
+
+  aboutMe: `my enthusiasm for a career in software engineering stems from a lifelong love of seeking out complex problems to solve. From learning how to solve a rubix cube as a young boy to more recently when I created a functional behavior tracker following a conversation with a school counselor who was having difficulty with the paper based system in her school. I have always found immense pride in finding creative solutions to difficult problems.`,
+  aboutMe2:
+    'Previous to this career change, I spent 2 years working in quality control for a pharmaceutical company which taught me the importance of consistency both in work production and in self motivation. I also have spent one year as an environmental educator. This job helped me hone skills in breaking down complex topics and ensuring comprehension. I believe this work experience would be especially beneficial to a career in SE as it would aid me in collaborating with other departments. I also have an undergraduate degree in physics which gives me a strong foundation to build skills from.',
+  aboutMe3:
+    'I am excited to work with other driven professionals and continue to grow in this field. I believe my work and school experience make me a qualified and unique candidate.',
 
   //  resume / projects
   resume: 'This will be the resume link',
@@ -328,7 +343,7 @@ const displayAboutMe = (siteInfoKey) => {
   //  Create About Me Div
   let aboutMeDiv = document.createElement('p')
   aboutMeDiv.className = 'about-me'
-  aboutMeDiv.innerHTML = siteInfoKey
+  aboutMeDiv.innerHTML = `${siteInfoKey}<br><br>${siteInfo.aboutMe2}<br><br>${siteInfo.aboutMe3}`
 
   //  Fill About Me Div
   aboutMeContainer.append(hiDiv)
