@@ -36,7 +36,7 @@ const siteInfo = {
 
   //  socials / contact info
   email: 'maxccalabro@gmail.com',
-  phone: '(845) 608-1842',
+  phone: '(617) 807-0683',
   linkedIn: 'https://www.linkedin.com/in/max-calabro/',
   gitHub: 'https://github.com/max-calabro'
 }
@@ -109,7 +109,8 @@ gitHub.innerHTML = 'GitHub'
 
 //  Icon buttons and containers
 //  Email
-let emailIconContainer = document.createElement('div')
+let emailIconContainer = document.createElement('a')
+emailIconContainer.setAttribute('href', 'mailto:maxccalabro@gmail.com')
 emailIconContainer.className = 'icon-email-container'
 
 let emailIcon = new Image()
@@ -495,7 +496,7 @@ const createListeners = () => {
   })
 
   document.querySelector('.icon-email').addEventListener('click', () => {
-    displayIconInfo('email')
+    //displayIconInfo('email')
   })
 
   document.querySelector('.icon-phone').addEventListener('click', () => {
