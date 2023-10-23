@@ -30,6 +30,8 @@ const siteInfo = {
 
   //  resume / projects
   resume: 'This will be the resume link',
+  resumeDoc:
+    'https://docs.google.com/document/d/1bIbR1d4b-5jVWzM_N-S2pR8XNCIn1wzjMyGl7Xdktt4/edit?usp=sharing',
   projects: 'This will be the projects link',
 
   //  socials / contact info
@@ -215,16 +217,21 @@ const fillSidebar = () => {
   document.querySelector('.sidebar').prepend(resume)
   document.querySelector('.sidebar').prepend(aboutMe)
 
+  //Container for name and title
+  let nameTitleContainer = document.createElement('div')
+  nameTitleContainer.className = 'name-title'
+  document.querySelector('.sidebar').prepend(nameTitleContainer)
+
   //  Title
   let sidebarTitle = document.createElement('h3')
   sidebarTitle.className = 'title'
-  document.querySelector('.sidebar').prepend(sidebarTitle)
+  document.querySelector('.name-title').prepend(sidebarTitle)
   document.querySelector('.title').innerHTML = siteInfo.title + '<br></br>'
 
   //  Name
   let sidebarName = document.createElement('h1')
   sidebarName.className = 'name'
-  document.querySelector('.sidebar').prepend(sidebarName)
+  document.querySelector('.name-title').prepend(sidebarName)
   document.querySelector('.name').innerHTML = siteInfo.name + '<br></br>'
 }
 
@@ -392,7 +399,18 @@ const showResume = () => {
 
   document.querySelector('.main-view').innerHTML = ''
   resumeShowing = true
+  setUpResumeLink()
   undoDot()
+}
+
+const setUpResumeLink = () => {
+  let resumeDocLink = document.createElement('button')
+  resumeDocLink.className = 'resume-doc-link'
+  document.querySelector('.contact-me').append(resumeDocLink)
+  document.querySelector('.resume-doc-link').innerHTML = 'Resume on Google Docs'
+
+  //turn on listener
+  resumeListener()
 }
 
 const undoDot = () => {
@@ -500,5 +518,11 @@ const projectListeners = () => {
 
   document.querySelector('.project-1').addEventListener('click', () => {
     followLink(project4.gitHub)
+  })
+}
+
+const resumeListener = () => {
+  document.querySelector('.resume-doc-link').addEventListener('click', () => {
+    followLink(siteInfo.resumeDoc)
   })
 }

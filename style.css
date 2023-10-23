@@ -169,6 +169,18 @@ header {
 }
 
 /*  Sidebar Buttons  */
+.resume-doc-link {
+  width: auto;
+  height: auto;
+
+  margin-left: 75px;
+}
+
+.resume-doc-link:hover {
+  box-shadow: 0 0 3px grey;
+  cursor: pointer;
+}
+
 .button-aboutMe, .button-resume, .button-projects, .button-contactInfo, .button-linkedIn, .button-gitHub{
   font-family: Roboto-Medium;
   font-size: 1.5em;
