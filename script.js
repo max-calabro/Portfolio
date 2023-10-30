@@ -360,6 +360,7 @@ const displayAboutMe = (siteInfoKey) => {
 
 const resetMainView = () => {
   mainViewWidth(true)
+  removeResumeLink()
   if (resumeShowing === true) {
     let beGone = document.querySelector('.resume-image')
     beGone.remove()
@@ -405,13 +406,23 @@ const showResume = () => {
 }
 
 const setUpResumeLink = () => {
+  let div = document.createElement('div')
+  div.className = 'div-for-button'
+  document.querySelector('.contact-me').append(div)
+
   let resumeDocLink = document.createElement('button')
   resumeDocLink.className = 'resume-doc-link'
-  document.querySelector('.contact-me').append(resumeDocLink)
+  document.querySelector('.div-for-button').append(resumeDocLink)
   document.querySelector('.resume-doc-link').innerHTML = 'Resume on Google Docs'
 
   //turn on listener
+
   resumeListener()
+}
+
+const removeResumeLink = () => {
+  let elems = document.getElementsByClassName('div-for-button')
+  while (elems.length > 0) elems[0].remove()
 }
 
 const undoDot = () => {
